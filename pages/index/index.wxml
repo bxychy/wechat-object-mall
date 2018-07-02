@@ -16,7 +16,7 @@
 	</view>
 	<view class="nav-container">
 		<scroll-view class="nav-navbar" scroll-x="true">
-
+			<view class="type-box" wx:for-items="{{categories}}" wx:key="id"></view>
 		</scroll-view>
 	</view>
 </view>
