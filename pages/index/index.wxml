@@ -14,9 +14,33 @@
 			</block>  
 		</view>
 	</view>
+
 	<view class="nav-container">
 		<scroll-view class="nav-navbar" scroll-x="true">
-			<view class="type-box" wx:for-items="{{categories}}" wx:key="id"></view>
+			<view class="nav-navbar-box" wx:for-items="{{categories}}" wx:key="id">
+				<view id="{{item.id}}" class="nav-navbar-item {{activeCategoryId == item.id ? 'naver-item-on' : ''}}" bindtap="tabClick">{{item.name}}</view>
+			</view>
 		</scroll-view>
+	</view>
+
+	<view class="search-container" >
+		<view class="search-content">
+			<image src="/images/search-pic.png" class="search-icon" />
+			<input placeholder="请输入搜索内容" class="search-input" maxlength="30" confirm-type="搜索" bindinput="listenerSearchInput" bindconfirm="toSearch" />
+			<button class="search-btn" bindtap="toSearch">搜索</button>
+		</view>
+	</view>
+	
+	<view class="goods-container">
+		<view class="goods-content" wx:for="{{goods}}" wx:key="{{index}}" data-id="{{ietm.id}}" >
+			<view class="goods-img-box">
+				<image src="{{item.pic}}_m" class="image"  />
+			</view>
+			<view class="goods-title">{{item.name}}</view>
+			<view class="goods-prices">
+				<view class="goods-price">¥ {{item.minPrice}}</view>
+				<view wx:if="{{item.originalPrice && item.originalPrice > 0}}" class="goods-price goods-price-no">¥ {{item.originalPrice}}</view>
+			</view>
+		</view>
 	</view>
 </view>

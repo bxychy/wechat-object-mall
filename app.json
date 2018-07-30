@@ -1,8 +1,10 @@
 {  
 	"pages":[
+		"pages/start/start",
     	"pages/index/index",
-		"pages/logs/logs",
-		"pages/shopCart/index"
+		"pages/shopCart/index",
+		"pages/goods-details/goodsDetail",
+		"pages/authorize/authorize"
   	],
   	"window":{
     	"backgroundTextStyle":"light",
@@ -28,6 +30,12 @@
       			"iconPath": "images/nav/cart-off.png",
       			"selectedIconPath": "images/nav/cart-on.png",
       			"text": "购物车"
+			},
+			{
+				"pagePath": "pages/authorize/authorize",
+      			"iconPath": "images/nav/cart-off.png",
+      			"selectedIconPath": "images/nav/cart-on.png",
+      			"text": "授权"
 			}
 		]
 	}  

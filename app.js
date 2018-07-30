@@ -26,7 +26,8 @@ App({
       		success: res => {
         		// 发送 res.code 到后台换取 openId, sessionKey, unionId
       		}
-    	})
+		})
+		
     	// 获取用户信息
     	wx.getSetting({
       		success: res => {
@@ -50,7 +51,7 @@ App({
   	},
   	globalData: {
 		userInfo: null,
-		subDomain:'tz',		//如果你的域名是： https://api.it120.cc/abcd 那么这里只要填写 abcd
+		subDomain:'zsychy',		//如果你的域名是： https://api.it120.cc/abcd 那么这里只要填写 abcd
 		version:'0.0',
 		shareProfile: '百款精品商品，总有一款适合您',	//首页转发的时候描述
 		baseUrl:'https://api.it120.cc/'				//baseUrl
