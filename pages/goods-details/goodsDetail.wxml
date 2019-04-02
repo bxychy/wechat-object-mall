@@ -41,6 +41,7 @@
         <view class="label-title">商品介绍</view>
         <view class="goods-desciption">
             <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+            <!-- <rich-text nodes="{{goodsDetail.content}}"></rich-text> -->
         </view>
     </view>
 
@@ -57,9 +58,45 @@
             <view class="shop-num">({{shopNum}})</view>
             <view style='position:absolute;bottom:10rpx;'> 购物车 </view>
         </view>
+        <view class="footer-joinShopCart" bindtap="goAddShopCar">加入购物车</view>
+        <view class="footer-buy" bindtap="toBuyNow">立即购买</view>
     </view>
 
-    <view class=""></view>
+    <view class="show-popup" hidden="{{hideShopPopup}}">
+        <view class="popup-mask" bindtap="closePopupTap"></view>
+        <view class="popup-content">
+            <view class="pop-goods-info">
+                <view class="pop-goods-img">
+                    <image src="{{goodsDetail.basicInfo.pic}}" class="goods-thumbnail"/>
+                </view>
+                <view class="pop-goods-des">
+                    <view class="pop-goods-title">{{goodsDetail.basicInfo.name}}</view>
+                    <view class="pop-goods-price">¥ {{selectSizePrice}}</view>
+                </view>
+                <view class="pop-goods-close" bindtap="closePopupTap"></view>
+            </view>
+            <view class="pop-goods-size">
+                <block wx:for="{{goodsDetail.properties}}" wx:for-item="property" wx:for-index="idx" wx:key="id">
+                    <view class="label">{{property.name}}</view>
+                    <view class="label-item-wrp">
+                        <view class="label-item {{item.active ? 'active' : '' }}" wx:for="{{property.childsCurGoods}}" wx:key="id" bindtap="labelItemTap" data-propertyindex="{{idx}}" data-propertyid="{{property.id}}" data-propertyname="{{property.name}}" data-propertychildindex="{{index}}" data-propertychildid="{{item.id}}" data-propertychildname="{{item.name}}">{{item.name}}</view>
+                    </view>
+                </block>
+            </view>
+            <view class="pop-goods-num">
+                <view class="num">购买数量</view>
+                <view class="num-item-wrp">
+                    <view class="num-less {{buyNumber == buyNumMin ? 'no': ''}}" bindtap="numLessTap">-</view>
+                    <view class="num-input">
+                        <input  type="number" value="{{buyNumber}}" disabled/>
+                    </view>
+                    <view class="num-add {{buyNumber== buyNumMax ? 'hui': ''}}" bindtap="numAddTap">+</view>
+                </view>
+            </view>
+            <view class="pop-join-btn" wx:if="{{shopType =='addShopCar'}}" bindtap="addShopCar">加入购物车</view>
+            <view class="pop-buy-btn" wx:if="{{shopType =='tobuy'}}" bindtap="buyNow">立即购买</view>
+        </view>
+    </view>
 </view>
 
 

@@ -2,7 +2,7 @@
 	"pages":[
 		"pages/start/start",
     	"pages/index/index",
-		"pages/shopCart/index",
+		"pages/shopCart/shopCart",
 		"pages/goods-details/goodsDetail",
 		"pages/authorize/authorize"
   	],
@@ -26,7 +26,7 @@
 				"text":"首页"
 			},
 			{
-				"pagePath": "pages/shopCart/index",
+				"pagePath": "pages/shopCart/shopCart",
       			"iconPath": "images/nav/cart-off.png",
       			"selectedIconPath": "images/nav/cart-on.png",
       			"text": "购物车"
